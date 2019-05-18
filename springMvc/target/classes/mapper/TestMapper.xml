@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--
+    namespace 翻译过来"命名空间"， 用来表示当前这个映射文件的唯一名称
+    所以一般来说namespace是我们映射对象的全类名
+    如：com.yyoo.mybatis.mapper.TestMapper
+-->
+<mapper namespace="com.jzh.mybatis.mapper.TestMapper">
+
+    <!--resultYpe:表示返回的结果，用StudnetBean装载-->
+
+    <select id="queryStudent" resultType="com.jzh.mybatis.beans.Student">
+        select * from student
+    </select>
+
+
+
+</mapper>

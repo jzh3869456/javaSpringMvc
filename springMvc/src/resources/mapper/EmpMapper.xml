@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--
+    namespace 翻译过来"命名空间"， 用来表示当前这个映射文件的唯一名称
+    所以一般来说namespace是我们映射对象的全类名
+    如：com.yyoo.mybatis.mapper.TestMapper
+-->
+<mapper namespace="com.jzh.mybatis.mapper.EmpMapper">
+
+    <!--resultYpe:表示返回的结果，用StudnetBean装载-->
+
+    <select id="queryAll" resultType="com.jzh.mybatis.beans.EmpBean">
+        select * from emp
+    </select>
+    
+    <!--带参数查询-->
+    
+    <select id="queryByParam" parameterType="java.util.Map" resultType="com.jzh.mybatis.beans.EmpBean">
+        select  empno,
+                ename,
+                job,
+                mgr,
+                hiredate,
+                sal,
+                comm,
+                deptno
+                from emp
+                <where>
+                    <if test="ename !=null" >
+                        ename like #{ename}
+                    </if>
+
+                    <if test="sal != null">
+                        and sal &gt; #{salBegin}
+                    </if>
+                    <if test="salEnd != null">
+                        and sal &lt; #{salEnd}
+                    </if>
+                </where>
+    </select>
+
+    <select id="queryDname" resultType="com.jzh.mybatis.beans.EmpDnameBean">
+      SELECT p.empno,p.ename,p.deptno,d.dname from emp p,dept d WHERE p.deptno = d.deptno
+    </select>
+
+
+
+
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
